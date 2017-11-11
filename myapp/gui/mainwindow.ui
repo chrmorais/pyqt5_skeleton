@@ -83,7 +83,7 @@
      <string>Tax Rate</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="calculatorButton">
     <property name="geometry">
      <rect>
       <x>140</x>

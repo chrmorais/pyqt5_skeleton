@@ -35,9 +35,9 @@ class Ui_MainWindow(object):
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(30, 140, 67, 17))
         self.label_3.setObjectName("label_3")
-        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(140, 180, 99, 27))
-        self.pushButton.setObjectName("pushButton")
+        self.calculatorButton = QtWidgets.QPushButton(self.centralwidget)
+        self.calculatorButton.setGeometry(QtCore.QRect(140, 180, 99, 27))
+        self.calculatorButton.setObjectName("calculatorButton")
         self.resultWindow = QtWidgets.QTextEdit(self.centralwidget)
         self.resultWindow.setGeometry(QtCore.QRect(140, 220, 104, 78))
         self.resultWindow.setObjectName("resultWindow")
@@ -49,6 +49,8 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+##conexion
+        self.calculatorButton.clicked.connect(self.CalculateTax)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -59,5 +61,12 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Tax Calculator"))
         self.label_2.setText(_translate("MainWindow", "Price"))
         self.label_3.setText(_translate("MainWindow", "Tax Rate"))
-        self.pushButton.setText(_translate("MainWindow", "Calculator tax"))
-
+        self.calculatorButton.setText(_translate("MainWindow", "Calculator tax"))
+    #funcion del boton
+    def CalculateTax(self):
+        price = int(self.priceEdit.toPlainText())
+        tax = (self.taxrate.value())
+        total_price = price + ((tax/100.0)*price)
+        print(total_price)
+        total_price_string = "The toal price with tax is: "+ str(total_price)
+        self.resultWindow.setText(total_price_string)
